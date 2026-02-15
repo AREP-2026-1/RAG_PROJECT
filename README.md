@@ -114,6 +114,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+**Security Note**: This project uses patched versions of all dependencies to address known vulnerabilities. All dependencies are regularly updated to their latest secure versions.
+
 ## ⚙️ Configuration
 
 ### Step 1: Set Up Environment Variables
