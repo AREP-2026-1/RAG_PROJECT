@@ -1,0 +1,38 @@
+What is RAG (Retrieval-Augmented Generation)?
+
+RAG stands for Retrieval-Augmented Generation. It is an AI framework that combines the power of large language models (LLMs) with external knowledge retrieval systems.
+
+How RAG Works:
+
+1. Document Indexing: First, documents are processed and converted into embeddings (numerical representations) that capture their semantic meaning. These embeddings are stored in a vector database.
+
+2. Query Processing: When a user asks a question, it is also converted into an embedding using the same model.
+
+3. Retrieval: The system searches the vector database to find the most relevant documents or passages that are similar to the query.
+
+4. Generation: The retrieved documents are provided as context to a large language model (like GPT), which then generates a response based on both its training and the retrieved information.
+
+Benefits of RAG:
+
+- Up-to-date Information: Unlike static LLMs, RAG can access current information from your document store.
+- Domain-Specific Knowledge: You can provide specialized knowledge that the LLM wasn't trained on.
+- Reduced Hallucinations: By grounding responses in retrieved documents, RAG reduces the likelihood of the model making up information.
+- Cost-Effective: Instead of fine-tuning large models, you can augment them with your documents.
+- Transparency: You can trace answers back to source documents.
+
+Use Cases:
+
+- Customer support chatbots with company-specific knowledge
+- Research assistants that can query large document collections
+- Educational tools that reference course materials
+- Legal document analysis systems
+- Medical information systems that reference clinical guidelines
+
+Key Components:
+
+1. Document Loader: Processes and loads documents from various sources
+2. Text Splitter: Breaks documents into manageable chunks
+3. Embedding Model: Converts text into vector representations
+4. Vector Store: Stores and enables efficient similarity search of embeddings
+5. Retriever: Fetches relevant documents based on queries
+6. LLM: Generates responses using retrieved context
