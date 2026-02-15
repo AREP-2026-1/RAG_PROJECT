@@ -101,17 +101,20 @@ similarity_search(query, k)   # Find similar docs
 ## ⚙️ Configuration Options
 
 ### Text Splitting
+
 ```python
 chunk_size=1000       # Characters per chunk
 chunk_overlap=200     # Overlap between chunks
 ```
 
 ### Retrieval
+
 ```python
 k=3                   # Number of documents to retrieve
 ```
 
 ### LLM
+
 ```python
 model_name="gpt-3.5-turbo"
 temperature=0.0       # Deterministic output
@@ -161,10 +164,10 @@ Sources:
 
 ## 🔗 Important Links
 
-- **LangChain Docs**: https://python.langchain.com/docs/
-- **RAG Tutorial**: https://python.langchain.com/docs/tutorials/rag/
-- **OpenAI Platform**: https://platform.openai.com/
-- **ChromaDB Docs**: https://docs.trychroma.com/
+- **LangChain Docs**: <https://python.langchain.com/docs/>
+- **RAG Tutorial**: <https://python.langchain.com/docs/tutorials/rag/>
+- **OpenAI Platform**: <https://platform.openai.com/>
+- **ChromaDB Docs**: <https://docs.trychroma.com/>
 
 ## 💡 Tips
 

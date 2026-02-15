@@ -7,6 +7,7 @@ This guide will walk you through setting up the RAG Project on your local machin
 Before you begin, ensure you have the following installed:
 
 1. **Python 3.8 or higher**
+
    ```bash
    python --version
    # or
@@ -14,6 +15,7 @@ Before you begin, ensure you have the following installed:
    ```
 
 2. **pip** (Python package manager)
+
    ```bash
    pip --version
    # or
@@ -21,12 +23,13 @@ Before you begin, ensure you have the following installed:
    ```
 
 3. **Git**
+
    ```bash
    git --version
    ```
 
 4. **OpenAI API Account**
-   - Sign up at https://platform.openai.com/
+   - Sign up at <https://platform.openai.com/>
    - Generate an API key from your account dashboard
 
 ## Step-by-Step Installation
@@ -45,7 +48,8 @@ cd RAG_PROJECT
 
 Creating a virtual environment isolates your project dependencies from other Python projects.
 
-#### On Windows:
+#### On Windows
+
 ```bash
 # Create virtual environment
 python -m venv venv
@@ -54,7 +58,8 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
-#### On macOS/Linux:
+#### On macOS/Linux
+
 ```bash
 # Create virtual environment
 python3 -m venv venv
@@ -74,6 +79,7 @@ pip install -r requirements.txt
 ```
 
 This will install:
+
 - langchain (core framework)
 - langchain-community (community integrations)
 - langchain-openai (OpenAI integration)
@@ -86,6 +92,7 @@ This will install:
 ### Step 4: Set Up Environment Variables
 
 1. Copy the example environment file:
+
 ```bash
 # On Windows
 copy .env.example .env
@@ -94,7 +101,8 @@ copy .env.example .env
 cp .env.example .env
 ```
 
-2. Open the `.env` file in a text editor:
+1. Open the `.env` file in a text editor:
+
 ```bash
 # Using nano (Linux/macOS)
 nano .env
@@ -106,14 +114,16 @@ notepad .env
 code .env
 ```
 
-3. Add your OpenAI API key:
+1. Add your OpenAI API key:
+
 ```
 OPENAI_API_KEY=sk-your-actual-api-key-here
 ```
 
-4. Save and close the file.
+1. Save and close the file.
 
 **Important Security Notes:**
+
 - Never commit your `.env` file to version control
 - Never share your API key publicly
 - The `.env` file is already in `.gitignore`
@@ -127,6 +137,7 @@ python test_project.py
 ```
 
 You should see output indicating all tests passed:
+
 ```
 🎉 All tests PASSED! The project is ready.
 ```
@@ -140,6 +151,7 @@ python example.py
 ```
 
 This will:
+
 1. Initialize the RAG system
 2. Load and process documents
 3. Create the vector database
@@ -161,6 +173,7 @@ Type your questions and get answers in real-time. Type `quit` to exit.
 ### Issue: "No module named 'langchain'"
 
 **Solution**: Make sure you activated the virtual environment and installed dependencies:
+
 ```bash
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
@@ -168,7 +181,8 @@ pip install -r requirements.txt
 
 ### Issue: "OpenAI API key not found"
 
-**Solution**: 
+**Solution**:
+
 1. Ensure you created the `.env` file
 2. Verify your API key is correct and starts with "sk-"
 3. Check there are no extra spaces in the `.env` file
@@ -176,12 +190,14 @@ pip install -r requirements.txt
 ### Issue: "Permission denied" errors
 
 **Solution**:
+
 - On Linux/macOS, you may need to use `python3` and `pip3` instead
 - Ensure you have write permissions in the project directory
 
 ### Issue: SSL Certificate errors
 
 **Solution**:
+
 ```bash
 pip install --upgrade certifi
 ```
@@ -189,6 +205,7 @@ pip install --upgrade certifi
 ### Issue: Package installation fails
 
 **Solution**:
+
 ```bash
 # Upgrade pip first
 pip install --upgrade pip
@@ -200,6 +217,7 @@ pip install -r requirements.txt
 ### Issue: ChromaDB errors on Windows
 
 **Solution**:
+
 - Install Microsoft C++ Build Tools
 - Or use WSL (Windows Subsystem for Linux)
 
@@ -236,11 +254,13 @@ deactivate
 To remove the project:
 
 1. Deactivate the virtual environment:
+
 ```bash
 deactivate
 ```
 
-2. Delete the project directory:
+1. Delete the project directory:
+
 ```bash
 # Navigate to parent directory
 cd ..
@@ -288,6 +308,7 @@ For a better development experience:
 - **Jupyter Notebook**: For experimental development
 
 Install with:
+
 ```bash
 pip install ipython jupyter
 ```

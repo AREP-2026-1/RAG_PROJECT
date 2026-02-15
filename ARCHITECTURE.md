@@ -89,34 +89,40 @@ QUERY PHASE:
 ## Component Details
 
 ### 1. Document Loader (DirectoryLoader)
+
 - **Purpose**: Load documents from file system
 - **Supported formats**: .txt files (extensible to .pdf, .docx, etc.)
 - **Output**: List of Document objects with content and metadata
 
 ### 2. Text Splitter (RecursiveCharacterTextSplitter)
+
 - **Purpose**: Break large documents into manageable chunks
 - **Chunk Size**: 1000 characters
 - **Overlap**: 200 characters (maintains context across boundaries)
 - **Strategy**: Recursive splitting by paragraphs, sentences, then characters
 
 ### 3. Embeddings (OpenAIEmbeddings)
+
 - **Model**: text-embedding-ada-002
 - **Purpose**: Convert text into numerical vectors (embeddings)
 - **Dimensions**: 1536-dimensional vectors
 - **Use**: Both document chunks and queries are embedded
 
 ### 4. Vector Store (ChromaDB)
+
 - **Purpose**: Store and search embeddings efficiently
 - **Type**: Persistent vector database
 - **Search Method**: Cosine similarity
 - **Retrieval**: Top-k most similar documents
 
 ### 5. Retriever
+
 - **Purpose**: Fetch relevant documents for a query
 - **Strategy**: Similarity search
 - **Parameter k**: Number of documents to retrieve (default: 3)
 
 ### 6. LLM (ChatOpenAI)
+
 - **Model**: gpt-3.5-turbo
 - **Temperature**: 0.0 (deterministic output)
 - **Purpose**: Generate natural language answers
@@ -124,6 +130,7 @@ QUERY PHASE:
 - **Output**: Contextual answer
 
 ### 7. QA Chain (RetrievalQA)
+
 - **Purpose**: Orchestrate the entire RAG pipeline
 - **Chain Type**: "stuff" (pass all context at once)
 - **Components**: Retriever + LLM + Prompt Template
@@ -176,17 +183,20 @@ User Input: "What are the benefits of RAG?"
 
 ## Alternative Configurations
 
-### Different Chain Types:
+### Different Chain Types
+
 - **map_reduce**: Process chunks separately, then combine
 - **refine**: Iteratively refine answer with each chunk
 - **map_rerank**: Score each chunk's relevance, use best
 
-### Different Retrievers:
+### Different Retrievers
+
 - **SelfQueryRetriever**: Auto-generate metadata filters
 - **MultiQueryRetriever**: Generate multiple query variants
 - **ContextualCompressionRetriever**: Compress retrieved docs
 
-### Different Vector Stores:
+### Different Vector Stores
+
 - **FAISS**: Fast CPU-based similarity search
 - **Pinecone**: Managed cloud vector database
 - **Weaviate**: GraphQL vector search

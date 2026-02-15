@@ -11,6 +11,7 @@ This document summarizes the security posture of the RAG Project and the actions
 Three critical vulnerabilities were identified in the initial dependency versions:
 
 #### 1. XML External Entity (XXE) Attack Vulnerability
+
 - **Package**: langchain-community
 - **Vulnerable Version**: < 0.3.27
 - **Initial Version**: 0.0.10 ❌
@@ -20,6 +21,7 @@ Three critical vulnerabilities were identified in the initial dependency version
 - **Mitigation**: Updated to version 0.3.27
 
 #### 2. Server-Side Request Forgery (SSRF) Vulnerability
+
 - **Package**: langchain-community
 - **Vulnerable Version**: < 0.0.28
 - **Initial Version**: 0.0.10 ❌
@@ -29,6 +31,7 @@ Three critical vulnerabilities were identified in the initial dependency version
 - **Mitigation**: Updated to version 0.3.27 (exceeds minimum patched version)
 
 #### 3. Pickle Deserialization Vulnerability
+
 - **Package**: langchain-community
 - **Vulnerable Version**: < 0.2.4
 - **Initial Version**: 0.0.10 ❌
@@ -63,29 +66,34 @@ python-dotenv==1.0.0            ✅ Secure
 ## Security Best Practices Implemented
 
 ### 1. API Key Protection
+
 - ✅ API keys stored in `.env` file (not in code)
 - ✅ `.env` file excluded from version control via `.gitignore`
 - ✅ `.env.example` provided as template
 - ✅ Documentation emphasizes not committing secrets
 
 ### 2. Input Validation
+
 - ✅ Environment variable validation in RAGSystem.__init__
 - ✅ Type hints throughout the codebase
 - ✅ Error handling for missing or invalid configurations
 
 ### 3. Secure File Operations
+
 - ✅ Safe file reading using context managers
 - ✅ Directory traversal protection through DirectoryLoader
 - ✅ No use of eval() or exec()
 - ✅ No shell command injection vulnerabilities
 
 ### 4. Dependency Management
+
 - ✅ All dependencies pinned to specific versions
 - ✅ Regular dependency updates
 - ✅ Security advisories monitored
 - ✅ No unused or unnecessary dependencies
 
 ### 5. Code Quality
+
 - ✅ Proper type hints to prevent type-related errors
 - ✅ Comprehensive error handling
 - ✅ No hardcoded credentials
@@ -152,6 +160,7 @@ python-dotenv==1.0.0            ✅ Secure
 ## Secure Development Practices
 
 ### Code Review Checklist
+
 - ✅ No hardcoded secrets
 - ✅ No SQL injection vulnerabilities
 - ✅ No command injection vulnerabilities
@@ -161,6 +170,7 @@ python-dotenv==1.0.0            ✅ Secure
 - ✅ Updated dependencies
 
 ### Testing
+
 - ✅ Unit tests for core functionality
 - ✅ Validation tests (6/6 passing)
 - ✅ Static analysis (CodeQL)
