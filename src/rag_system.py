@@ -17,6 +17,7 @@ from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
+from langchain.schema import Document
 
 
 class RAGSystem:
@@ -31,7 +32,9 @@ class RAGSystem:
         
         Args:
             data_dir: Directory containing documents to index
-            persist_directory: Directory to persist the vector database
+            persist_directory: Directory to persist the vector database. If the directory
+                             already exists, the vector store will be loaded from it.
+                             If it doesn't exist, it will be created during initialization.
         """
         load_dotenv()
         
@@ -55,12 +58,12 @@ class RAGSystem:
             temperature=0.0
         )
     
-    def load_documents(self) -> List:
+    def load_documents(self) -> List[Document]:
         """
         Load documents from the data directory.
         
         Returns:
-            List of loaded documents
+            List of loaded Document objects
         """
         print(f"Loading documents from {self.data_dir}...")
         
@@ -75,15 +78,15 @@ class RAGSystem:
         
         return documents
     
-    def split_documents(self, documents: List) -> List:
+    def split_documents(self, documents: List[Document]) -> List[Document]:
         """
         Split documents into smaller chunks for better retrieval.
         
         Args:
-            documents: List of documents to split
+            documents: List of Document objects to split
             
         Returns:
-            List of document chunks
+            List of Document chunks
         """
         print("Splitting documents into chunks...")
         
@@ -98,12 +101,12 @@ class RAGSystem:
         
         return chunks
     
-    def create_vectorstore(self, documents: List):
+    def create_vectorstore(self, documents: List[Document]):
         """
         Create a vector store from documents.
         
         Args:
-            documents: List of documents to store
+            documents: List of Document objects to store
         """
         print("Creating vector store...")
         
@@ -223,7 +226,7 @@ Answer:"""
             "sources": [doc.metadata.get("source", "Unknown") for doc in source_docs]
         }
     
-    def similarity_search(self, query: str, k: int = 3) -> List:
+    def similarity_search(self, query: str, k: int = 3) -> List[Document]:
         """
         Perform similarity search to find relevant documents.
         
@@ -232,7 +235,7 @@ Answer:"""
             k: Number of documents to return
             
         Returns:
-            List of relevant documents
+            List of relevant Document objects
         """
         if not self.vectorstore:
             raise ValueError("Vector store not initialized. Call initialize() first.")
